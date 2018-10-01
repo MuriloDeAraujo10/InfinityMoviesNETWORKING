@@ -1,0 +1,4 @@
+#Sun Sep 30 23:09:53 BRT 2018
+base.0=C\:\\Users\\muril\\Desktop\\Android\\Filmes\\ANDROID 2.4\\ClienteAds18\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+path.0=classes.dex
+renamed.0=classes.dex

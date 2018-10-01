@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorVermelho">#FF0000 </color>
+    <color name="colorAzul">#0000FF </color>
+    <color name="colorVerde">#00FF00 </color>
+    <color name="colorZica">#CCEEFF </color>
+    <color name="colorCinza">#E8E8E1</color>
+    <color name="colorPreto">#000000</color>
+    <color name="colorBotao">#848484</color>
+    <color name="colorFundo">#FE2E2E</color>
+    <color name="colorGG">#2E9AFE</color>
+    <color name="colorZicaa">#F26466</color>
+</resources>

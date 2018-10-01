@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Infinity War Movies</string>
+    <string name="dica_busca">Nome do Filme</string>
+    <string name="btn_busca">Buscar</string>
+    <string name="detalhr_nome">Nome</string>
+    <string name="detalhe_direcao">Direção</string>
+    <string name="detalhe_elenco">Elenco</string>
+    <string name="detalhe_lancamento">Lançamento</string>
+    <string name="detalhe_descricao">Descrição</string>
+    <string name="detalhe_popularidade">Popularidade</string>
+</resources>
