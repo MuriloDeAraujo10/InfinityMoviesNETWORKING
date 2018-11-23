@@ -1,33 +1,91 @@
 package br.usjt.ads.desmob.clienteads18.model;
 
+/*import android.app.DownloadManager;*/
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 public class ClienteDAO {
 
-    private static Cliente[] clientes;
+    private static OkHttpClient client = new OkHttpClient();
 
-    private ClienteDAO(){}
+    private ClienteDAO(){
 
-    public static Cliente[] getClientes(){
+    }
 
-        if(clientes == null){
+    public static ArrayList<Cliente> getClientes(String url) throws IOException {
 
-            clientes = new Cliente[15];
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
 
-            clientes[0] = new Cliente(1, "O Homem nas Trevas", "ho_usjt.br", "Fede Alvarez", "Stephen Lang, Jane Levy, Dylan Minnette", "08/09/2016", "Rocky, Alex e Money são ladrões que ganham dinheiro invadindo casas de pessoas ricas em Detroit. Money fica sabendo sobre um veterano de guerra cego que ganhou muito dinheiro pela morte de sua única filha. Pensando ser um alvo fácil, o trio invade a casa isolada do homem em uma vizinhança abandonada. Após se verem presos lá dentro, os jovens invasores têm que lutar por suas vidas ao descobrirem que a vítima não é nada inofensiva.", "89%", "1h28m");
-            clientes[1] = new Cliente(2,"Chamas da Vingança", "cv@usjt.br","Tony Scott", "Denzel Washington","08/10/2004", "Uma grande onda de sequestros e criminalidade varre a Cidade do México, fazendo com que muitos de seus cidadãos mais ricos contratem guarda-costas para seus filhos. John Creasy é um ex-agente da CIA. Sem emprego e bebendo mais do que deveria, ele aceita a proposta de ser guarda-costas da pequena Pita, uma garota de 9 anos que é filha de um industrial.", "92%", "2h27m");
-            clientes[2] = new Cliente(3,"Tróia, Aquiles Lindo" ,"tr@usjt.br","Wolfgang", "Brad Pitt" , "14/05/2004", "O filme conta a história da batalha entre os reinos antigos de Troia e Esparta. Durante uma visita ao rei de Esparta, Menelau, o príncipe troiano Paris se apaixona pela esposa do rei, Helena, e a leva de volta para Troia. Aquiles e Heitor se enfrentar em ujma épica batalha até a morte. Aquiles realiza seu objetivo de entrar para a história como o maior guerreiro de todos.", "91%", "3h16m");
-            clientes[3] = new Cliente(4,"Guerra Infinita", "gi@usjt.br" ,"Irmãos Russo", "Vingadores e Thanos", "26/04/2018", "Homem de Ferro, Thor, Hulk e os Vingadores se unem para combater seu inimigo mais poderoso, o maligno Thanos. Em uma missão para coletar todas as seis pedras infinitas, Thanos planeja usá-las para infligir sua vontade maléfica sobre a realidade. Nos 5 primeiros minutos de filme já ocorre uma batalha épica entre Thanos e Hulk, Hulk é faciilmente derrotado e fica com medinho do Thanos.", "95%", "2h40m");
-            clientes[4] = new Cliente(5,"Invocação do Mal", "im@usjt.br" ,"James Wan", "Ed e Lorraine Warren", "13/09/2013", "Os investigadores paranormais Ed e Lorraine Warren trabalham para ajudar a família aterrorizada por uma entidade demoníaca em sua fazenda. Esta entidade possui a mulher e faz com que ela tente matar toda a sua família e todos aqueles que entrarem no seu caminho. Esse demônio é o bichão mesmo, tem a fúria de todos os espíritos dentro de sí", "91%", "1h52m");
-            clientes[5] = new Cliente(6,"Ananabelle do Capiroto", "ab@usjt.br" ,"John Leonetti" , "Annabelle e suas vítimas", "09/10/2014", "John Form acha que encontrou o presente ideal para sua esposa grávida, uma boneca vintage. No entanto, a alegria do casal não dura muito. Uma noite terrível, membros de uma seita satânica invadem a casa do casal em um ataque violento. Ao tentarem invocar um demônio, eles mancham a boneca de sangue, tornando-a receptora de uma entidade do mal.", "76%", "1h29m");
-            clientes[6] = new Cliente(7,"Pantera Negra", "pn@usjt.br" ,"Ryan Coogle", "Chadwick Boseman" , "15/02/2018", "Pantera Negra (em inglês: Black Panther) é um super-herói das histórias em quadrinhos publicadas pela Marvel Comics, cuja identidade secreta é a de T'Challa, rei de Wakanda, um reino fictício na África. O personagem foi criado pelo escritor e editor Stan Lee e pelo escritor e ilustrador Jack Kirby, aparecendo pela primeira vez em Fantastic Four # 52 (julho de 1966) na Era de Prata das histórias em quadrinhos.", "92%", "2h15m");
-            clientes[7] = new Cliente(8,"Sem Dor, Sem Ganho", "sd@usjt.br" ,"Michael Bay", "Dwayne Johnson, Mark Wahlberg", "23/08/2013", "Na década de 1990 em Miami, um gerente de academia e seus cúmplices musculosos sequestram um rico empresário e forçam-no a passar todos os seus bens, incluindo carros e uma mansão de luxo, para eles. Porém tudo começa a dar errado porque os três são muitooooo burros, porém engraçados e viciados em arrumar confusão da pessada mesmo. ", "87%", "2h9m");
-            clientes[8] = new Cliente(9,"Inferno Hell", "if@usjt.br" ,"Ron Woward" , "Tom Hanks", "13/10/2016", "O simbologista Robert Langdon e uma médica viajam pela Europa para deter o plano de um lunático de disseminar um vírus mortal. O caro é loucão, pra espalhar esse porra pelo mundo precisa ser muito doente mesmo. O cara pode ficar em casa de boas com a sua mina e prefere espalhar um vírus mortal e matar toda a população do universo global terrestre do sistema solar dos humanos.", "79%", "2h1m");
-            clientes[9] = new Cliente(10, "Thror Ragnarok", "thror@usjt.br", "Taika Waitifi", "Thor", "26/10/2017", "Thor está preso do outro lado do universo. Ele precisa correr contra o tempo para voltar a Asgard e parar Ragnarok, a destruição de seu mundo, que está nas mãos da poderosa e implacável vilã Hela. Thor encontra Hulk, porém ele estava louco e não se lembrava de nada, os dois lutam com muita violência e brutalidade. Thor se da conta de que ele nao é o deus do martelo e sim o deus do trovão.", "93%", "2h10m");
-            clientes[10] = new Cliente(11, "O Incrivel Hulk", "hulk@usjt.br", "Stan Lee", "Edward Norton", "01/01/1960", "O Hulk, por vezes referido como O Incrível Hulk (The Incredible Hulk, no original em inglês) é um personagem de quadrinhos/banda desenhada do gênero super-herói, propriedade da Marvel Comics, editora pela qual as histórias do personagem são publicados desde sua criação, nos anos 1960. Hulk ama esmagar as coisas, principalmente os inimigos. A mulher dele deve relamente gostar de homem maduro", "85%", "2h15m");
-            clientes[11] = new Cliente(12, "O Quarto do Pânico", "quarto@usjt.br", "David Fincher", "Kristen Stewart, Jodie Foster", "07/02/2002", "A recém-separada Meg Altman e a filha Sarah são surpreendidas com a invasão de sua casa por três bandidos. Elas se escondem em um quarto secreto para situações de emergências, mas passam a enfrentar pequenos problemas dentro e fora de seu refúgio, pois o que os homens procuram está justamente no quarto onde elas estão. O quarto é praticamente impenetravel, mas eles darão um jeito de entrar", "88%", "1h53m");
-            clientes[12] = new Cliente(13, "Era de Ultron", "ultron@usjt.br", "Joss Whedon", "Vingadores e Ultron", "23/04/2015","Ao tentar proteger o planeta de ameaças, Tony Stark constrói um sistema de inteligência artificial que cuidaria da paz mundial. O projeto acaba dando errado e gera o nascimento do Ultron. O visão é o portador de uma das seis jóias do infinito. No filme seguinte, Thanos consegue reunir estas jóias e acaba com geral com um simples estalar de dedos, fazendo com que quem sobrou fique chorando.", "92%", "2h22m");
-            clientes[13] = new Cliente(14, "A Freira", "freira@usjt.br", "Corin Hardy", "Taissa Farmiga", "06/09/2018", "Presa em um convento na Romênia, uma freira comete suicídio. Para investigar o caso, o Vaticano envia um padre assombrado e uma noviça prestes a se tornar freira. Eu particularmente ainda nao vi esse filme, mas é sobre uma freira que fica possuida pela capiroto e resolve matar a porra toda. Ela poderia ficar lá de boas rezando um pai nosso, mas não, prefere sair matando a porra toda... Só falta depois de matar geral ela ir pedir perdão....", "85%", "1h36m");
-            clientes[14] = new Cliente(15, "Slender Man", "slender@usjt.br", "Sylvain White", "Slenderman e companhia", "23/08/2018", "Slender Man ou Slenderman (em português: Homem Esguio - tradução livre) é um personagem fictício sobrenatural que se originou como um meme da internet criado pelo usuário Eric Knudsen (aka \"Victor Surge\") no fórum de discussão Something Awful em 2009. Ele é descrito como semelhante a um homem magro, anormalmente alto, com uma cabeça branca e inexpressiva e que veste um terno preto.", "61%", "1h36m");
+        Response response = client.newCall(request).execute();
+        String arquivo = response.body().string();
+
+        ArrayList<Cliente> clientes = new ArrayList<>();
+
+        try {
+            JSONArray lista = new JSONArray(arquivo);
+            for (int i = 0; i < lista.length(); i++) {
+                JSONObject item = (JSONObject) lista.get(i);
+                Cliente cliente = new Cliente();
+                cliente.setId(item.getInt("id"));
+                cliente.setNome(item.getString("nome"));
+                cliente.setEmail(item.getString("email"));
+                cliente.setDiretor(item.getString("diretor"));
+                cliente.setElenco(item.getString("elenco"));
+                cliente.setLancamento(item.getString("lancamento"));
+                cliente.setDescricao(item.getString("descricao"));
+                cliente.setPopularidade(item.getString("popularidade"));
+                cliente.setDuracao(item.getString("duracao"));
+                clientes.add(cliente);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            throw new IOException(e);
         }
         return clientes;
     }
+
+
+    public static Bitmap getImage(String url) throws IOException {
+
+        Bitmap img = null;
+
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+
+        Response response = client.newCall(request).execute();
+
+        InputStream is = response.body().byteStream();
+
+        img = BitmapFactory.decodeStream(is);
+
+        is.close();
+
+        return img;
+    }
+
+    public static boolean isConnected(Context context) {
+        ConnectivityManager connectivityManager =
+                (ConnectivityManager) context
+                        .getSystemService(Context.CONNECTIVITY_SERVICE);
+        return connectivityManager.getActiveNetworkInfo() != null
+                && connectivityManager.getActiveNetworkInfo().isConnected();
+    }
+
 }
