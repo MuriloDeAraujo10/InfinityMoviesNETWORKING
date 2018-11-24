@@ -1,4 +1,4 @@
-br.usjt.ads.desmob.clienteads18
+br.usjt.ads.desmob.br.usjt.ads.desmob.filmeads
 attr barrierAllowsGoneWidgets
 attr barrierDirection
 attr chainUseRtl
@@ -93,7 +93,7 @@ drawable ultron_usjt_br
 id barrier
 id bottom
 id chains
-id detalhe_foto_cliente
+id detalhe_foto_filme
 id detalhe_txt_descricao
 id detalhe_txt_diretor
 id detalhe_txt_duracao
@@ -109,7 +109,7 @@ id invisible
 id left
 id linha_detalhe
 id linha_nome
-id lista_clientes
+id lista_filmes
 id none
 id packed
 id parent
@@ -123,10 +123,10 @@ id top
 id txt_busca
 id txt_nome
 id wrap
-layout activity_detalhe_cliente
-layout activity_lista_clientes
+layout activity_detalhe_filme
+layout activity_lista_filmes
 layout activity_main
-layout linha_cliente
+layout linha_filme
 mipmap ic_launcher
 mipmap ic_launcher_foreground
 mipmap ic_launcher_round

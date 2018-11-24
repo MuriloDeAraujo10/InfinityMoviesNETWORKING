@@ -1,4 +1,4 @@
-package br.usjt.ads.desmob.clienteads18.controler;
+package br.usjt.ads.desmob.filmeads.controler;
 
 import android.widget.ImageView;
 import android.widget.TextView;

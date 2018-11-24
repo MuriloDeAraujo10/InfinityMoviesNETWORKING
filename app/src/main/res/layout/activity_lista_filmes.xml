@@ -6,14 +6,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controler.ListaClientesActivity"
+    tools:context=".controler.ListaFilmesActivity"
     android:textColor="@color/colorPreto"
     android:background="@color/colorZica">
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/lista_clientes"
+        android:id="@+id/lista_filmes"
         android:textColor="@color/colorPreto"/>
 
 </LinearLayout>

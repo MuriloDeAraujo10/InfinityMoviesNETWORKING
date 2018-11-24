@@ -92,7 +92,7 @@ int drawable ultron_usjt_br 0x7f030014
 int id barrier 0x7f040000
 int id bottom 0x7f040001
 int id chains 0x7f040002
-int id detalhe_foto_cliente 0x7f040003
+int id detalhe_foto_filme 0x7f040003
 int id detalhe_txt_descricao 0x7f040004
 int id detalhe_txt_diretor 0x7f040005
 int id detalhe_txt_duracao 0x7f040006
@@ -108,7 +108,7 @@ int id invisible 0x7f04000f
 int id left 0x7f040010
 int id linha_detalhe 0x7f040011
 int id linha_nome 0x7f040012
-int id lista_clientes 0x7f040013
+int id lista_filmes 0x7f040013
 int id none 0x7f040014
 int id packed 0x7f040015
 int id parent 0x7f040016
@@ -122,10 +122,10 @@ int id top 0x7f04001d
 int id txt_busca 0x7f04001e
 int id txt_nome 0x7f04001f
 int id wrap 0x7f040020
-int layout activity_detalhe_cliente 0x7f050000
-int layout activity_lista_clientes 0x7f050001
+int layout activity_detalhe_filme 0x7f050000
+int layout activity_lista_filmes 0x7f050001
 int layout activity_main 0x7f050002
-int layout linha_cliente 0x7f050003
+int layout linha_filme 0x7f050003
 int mipmap ic_launcher 0x7f060000
 int mipmap ic_launcher_foreground 0x7f060001
 int mipmap ic_launcher_round 0x7f060002

@@ -1,4 +1,4 @@
-package br.usjt.ads.desmob.clienteads18;
+package br.usjt.ads.desmob.filmeads;
 
 import org.junit.Test;
 

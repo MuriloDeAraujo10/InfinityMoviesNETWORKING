@@ -1,4 +1,4 @@
-package br.usjt.ads.desmob.clienteads18.model;
+package br.usjt.ads.desmob.filmeads.model;
 
 /*import android.app.DownloadManager;*/
 import android.content.Context;
@@ -18,15 +18,15 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class ClienteDAO {
+public class FilmeDAO {
 
     private static OkHttpClient client = new OkHttpClient();
 
-    private ClienteDAO(){
+    private FilmeDAO(){
 
     }
 
-    public static ArrayList<Cliente> getClientes(String url) throws IOException {
+    public static ArrayList<Filme> getFilmes(String url) throws IOException {
 
         Request request = new Request.Builder()
                 .url(url)
@@ -35,29 +35,29 @@ public class ClienteDAO {
         Response response = client.newCall(request).execute();
         String arquivo = response.body().string();
 
-        ArrayList<Cliente> clientes = new ArrayList<>();
+        ArrayList<Filme> filmes = new ArrayList<>();
 
         try {
             JSONArray lista = new JSONArray(arquivo);
             for (int i = 0; i < lista.length(); i++) {
                 JSONObject item = (JSONObject) lista.get(i);
-                Cliente cliente = new Cliente();
-                cliente.setId(item.getInt("id"));
-                cliente.setNome(item.getString("nome"));
-                cliente.setEmail(item.getString("email"));
-                cliente.setDiretor(item.getString("diretor"));
-                cliente.setElenco(item.getString("elenco"));
-                cliente.setLancamento(item.getString("lancamento"));
-                cliente.setDescricao(item.getString("descricao"));
-                cliente.setPopularidade(item.getString("popularidade"));
-                cliente.setDuracao(item.getString("duracao"));
-                clientes.add(cliente);
+                Filme filme = new Filme();
+                filme.setId(item.getInt("id"));
+                filme.setNome(item.getString("nome"));
+                filme.setEmail(item.getString("email"));
+                filme.setDiretor(item.getString("diretor"));
+                filme.setElenco(item.getString("elenco"));
+                filme.setLancamento(item.getString("lancamento"));
+                filme.setDescricao(item.getString("descricao"));
+                filme.setPopularidade(item.getString("popularidade"));
+                filme.setDuracao(item.getString("duracao"));
+                filmes.add(filme);
             }
         } catch (JSONException e) {
             e.printStackTrace();
             throw new IOException(e);
         }
-        return clientes;
+        return filmes;
     }
 
 
@@ -87,5 +87,4 @@ public class ClienteDAO {
         return connectivityManager.getActiveNetworkInfo() != null
                 && connectivityManager.getActiveNetworkInfo().isConnected();
     }
-
 }

@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btn_busca"
-        android:onClick="buscarClientes"
+        android:onClick="buscarFilmes"
         android:backgroundTint="@color/colorBotao"
         android:textColor="#FFFFFF"/>
 

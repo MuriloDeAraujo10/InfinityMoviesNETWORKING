@@ -1,4 +1,4 @@
-package br.usjt.ads.desmob.clienteads18.controler;
+package br.usjt.ads.desmob.filmeads.controler;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -8,29 +8,29 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import br.usjt.ads.desmob.clienteads18.R;
-import br.usjt.ads.desmob.clienteads18.model.Cliente;
-import br.usjt.ads.desmob.clienteads18.model.Util;
 
-public class ClienteAdapter extends BaseAdapter {
-    private ArrayList<Cliente> clientes;
+import java.util.ArrayList;
+import br.usjt.ads.desmob.filmeads.R;
+import br.usjt.ads.desmob.filmeads.model.Filme;
+import br.usjt.ads.desmob.filmeads.model.Util;
+
+public class FilmeAdapter extends BaseAdapter {
+    private ArrayList<Filme> filmes;
     private Context context;
 
-    public ClienteAdapter(ArrayList<Cliente> clientes, Context context) {
+    public FilmeAdapter(ArrayList<Filme> filmes, Context context) {
 
-        this.clientes = clientes;
+        this.filmes = filmes;
         this.context = context;
     }
     @Override
     public int getCount() {
-        return clientes.size();
+        return filmes.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return clientes.get(i);
+        return filmes.get(i);
     }
 
     @Override
@@ -44,22 +44,23 @@ public class ClienteAdapter extends BaseAdapter {
                    if (linha == null) {
             LayoutInflater inflater = (LayoutInflater)
                     context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            linha = inflater.inflate(R.layout.linha_cliente, viewGroup, false);
-            ImageView fotoCliente = linha.findViewById(R.id.foto_cliente);
+            linha = inflater.inflate(R.layout.linha_filme, viewGroup, false);
+            ImageView fotoFilme = linha.findViewById(R.id.foto_cliente);
+            /*ImageView fotoFilme = linha.findViewById(R.id.foto_filme);*/
             TextView linhaNome = linha.findViewById(R.id.linha_nome);
             TextView linhaDetalhe = linha.findViewById(R.id.linha_detalhe);
-            ViewHolder holder = new ViewHolder(fotoCliente, linhaNome, linhaDetalhe);
+            ViewHolder holder = new ViewHolder(fotoFilme, linhaNome, linhaDetalhe);
             linha.setTag(holder);
         }
 
-        Cliente cliente = clientes.get(i);
+        Filme filme = filmes.get(i);
 
         ViewHolder holder = (ViewHolder) linha.getTag();
 
-        holder.getLinha1().setText(cliente.getNome() +  " - ID: " + cliente.getId());
-        holder.getLinha2().setText("Diretor:" + (cliente.getDiretor() + " - Lançamento:" + cliente.getLancamento()));
+        holder.getLinha1().setText(filme.getNome() +  " - ID: " + filme.getId());
+        holder.getLinha2().setText("Diretor:" + (filme.getDiretor() + " - Lançamento:" + filme.getLancamento()));
 
-        Drawable drawable = Util.getDrawable(context, cliente.getFigura());
+        Drawable drawable = Util.getDrawable(context, filme.getFigura());
         holder.getImagem().setImageDrawable(drawable);
         return linha;
     }

@@ -1,9 +1,9 @@
-package br.usjt.ads.desmob.clienteads18.model;
+package br.usjt.ads.desmob.filmeads.model;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import java.lang.reflect.Field;
-import br.usjt.ads.desmob.clienteads18.R;
+import br.usjt.ads.desmob.filmeads.R;
 
 public class Util {
 

@@ -1,4 +1,4 @@
-package br.usjt.ads.desmob.clienteads18.controler;
+package br.usjt.ads.desmob.filmeads.controler;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,12 +12,12 @@ import android.widget.TextView;
 
 import java.io.IOException;
 
-import br.usjt.ads.desmob.clienteads18.R;
-import br.usjt.ads.desmob.clienteads18.model.ClienteDAO;
-import br.usjt.ads.desmob.clienteads18.model.Util;
-import br.usjt.ads.desmob.clienteads18.model.Cliente;
+import br.usjt.ads.desmob.filmeads.R;
+import br.usjt.ads.desmob.filmeads.model.Filme;
+import br.usjt.ads.desmob.filmeads.model.FilmeDAO;
+import br.usjt.ads.desmob.filmeads.model.Util;
 
-public class DetalheClienteActivity extends Activity {
+public class DetalheFilmeActivity extends Activity {
     public static final String IMG = MainActivity.HOST+"/img/";
     private TextView nome, diretor, elenco, lancamento, descricao, popularidade, duracao;
     private ImageView foto;
@@ -26,7 +26,7 @@ public class DetalheClienteActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detalhe_cliente);
+        setContentView(R.layout.activity_detalhe_filme);
 
         nome = findViewById(R.id.txt_nome);
         diretor = findViewById(R.id.detalhe_txt_diretor);
@@ -35,21 +35,21 @@ public class DetalheClienteActivity extends Activity {
         elenco = findViewById(R.id.detalhe_txt_elenco);
         popularidade = findViewById(R.id.detalhe_txt_popularidade);
         duracao = findViewById(R.id.detalhe_txt_duracao);
-        foto = findViewById(R.id.detalhe_foto_cliente);
+        foto = findViewById(R.id.detalhe_foto_filme);
         context = this;
 
         Intent intent = getIntent();
-        Cliente cliente = (Cliente)intent.getSerializableExtra(ListaClientesActivity.CLIENTE);
+        Filme filme = (Filme)intent.getSerializableExtra(ListaFilmesActivity.FILME);
 
-        nome.setText(cliente.getNome().toString());
-        diretor.setText(cliente.getDiretor().toString());
-        elenco.setText(cliente.getElenco().toString());
-        lancamento.setText(cliente.getLancamento().toString());
-        descricao.setText(cliente.getDescricao().toString());
-        popularidade.setText(cliente.getPopularidade());
-        duracao.setText(cliente.getDuracao());
-        foto.setImageDrawable(Util.getDrawable(this, cliente.getFigura()));
-        new DownloadImagem().execute(IMG+cliente.getFigura()+".jpg");
+        nome.setText(filme.getNome().toString());
+        diretor.setText(filme.getDiretor().toString());
+        elenco.setText(filme.getElenco().toString());
+        lancamento.setText(filme.getLancamento().toString());
+        descricao.setText(filme.getDescricao().toString());
+        popularidade.setText(filme.getPopularidade());
+        duracao.setText(filme.getDuracao());
+        foto.setImageDrawable(Util.getDrawable(this, filme.getFigura()));
+        new DownloadImagem().execute(IMG+filme.getFigura()+".jpg");
     }
     private class DownloadImagem extends AsyncTask<String, Void, Bitmap> {
 
@@ -57,7 +57,7 @@ public class DetalheClienteActivity extends Activity {
         protected Bitmap doInBackground(String... strings) {
             Bitmap imagem = null;
             try {
-                imagem = ClienteDAO.getImage(strings[0]);
+                imagem = FilmeDAO.getImage(strings[0]);
             } catch (IOException e) {
                 e.printStackTrace();
             }

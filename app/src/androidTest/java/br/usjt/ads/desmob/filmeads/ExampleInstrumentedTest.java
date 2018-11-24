@@ -1,4 +1,4 @@
-package br.usjt.ads.desmob.clienteads18;
+package br.usjt.ads.desmob.filmeads;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("br.usjt.ads.desmob.clienteads18", appContext.getPackageName());
+        assertEquals("br.usjt.ads.desmob.br.usjt.ads.desmob.filmeads", appContext.getPackageName());
     }
 }
